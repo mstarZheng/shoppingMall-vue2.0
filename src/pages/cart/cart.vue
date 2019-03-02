@@ -1,10 +1,16 @@
 <template>
-  <div>我是购物车</div>  
+  <Header>
+    <p slot="center">购物车主页面</p>
+  </Header>
 </template>
 <script>
-export default {
-    name:'cart'
-}
+  import Header from '@/components/Header/Header'
+  export default {
+      name:'cart',
+      components:{
+        Header,
+      }
+  }
 </script>
 <style scoped>
     

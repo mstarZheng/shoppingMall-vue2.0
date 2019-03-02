@@ -1,6 +1,10 @@
 <template>
   <div class="cat" ref="catView">
-    <Header></Header>
+    <Header class="header" 
+            @parentBack="myback"
+            @parentMore="mymore"
+            @parentChange="mykeyup">
+    </Header>
     <div class="cat-menu">
       <div class="menu-left">
         <ul v-if="catInfo">
@@ -37,6 +41,15 @@
         methods: {
           change(index){
             this.currentIndex = index;
+          },
+          myback(){
+            console.log("mymore");
+          },
+          mymore(){
+            console.log("mymore");
+          },
+          mykeyup(msg){
+            console.log("mykeyup",this.msg);
           }
         },
         created(){

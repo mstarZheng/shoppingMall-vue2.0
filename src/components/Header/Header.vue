@@ -1,13 +1,37 @@
 <template>
-    <mt-header :title="title" :fixed="true" ref="header">
-        <mt-button icon="back" slot="left"></mt-button>
-        <mt-button icon="more" slot="right"></mt-button>
-    </mt-header>
+    <div class="header">
+      <slot name="left">
+        <a href="#" class="left-menu iconfont" @click="back()">&#xe622;</a>
+      </slot>
+      <slot name="center" class="center-menu">
+        <form class="search">
+          <input type="text" placeholder="华为手机最牛X的手机" @keyup="change()" v-model="msg">
+        </form>
+      </slot>
+      <slot name="right">
+        <a href="#" class="right-menu iconfont" @click="more()">&#xe61c;</a>
+      </slot>
+    </div>
 </template>
 <script>
     export default {
         name:"Header",
-        props:['title'],
+        data(){
+          return{
+            msg:""
+          }
+        },
+        methods:{
+          back(){
+            this.$emit("parentBack");
+          },
+          more(){
+            this.$emit("parentMore");
+          },
+          change(){
+            this.$emit("parentChange",this.msg);
+          }
+        },
         mounted(){
             this.$nextTick(function(){
                 //在组件中通过this.$el可以获取到当当前钻的根元素
@@ -21,7 +45,7 @@
                 //1、获取头部的高度
                 let headerHeight = this.$el.offsetHeight;
                 // console.log(headerHeight);
-                //2、获取头部罪案的父组件
+                //2、获取头部组件的父组件
                 let parentEle = this.$parent.$el;
                 //3、设置父组件的padding
                 parentEle.style.paddingTop = headerHeight + "px";
@@ -30,21 +54,52 @@
     }
 </script>
 <style scoped lang="less">
-    
-</style>
-<style>
-  .mint-header{
+  .header{
+    width: 100%;
     height: 80px;
+    line-height: 80px;
     padding: 0 15px;
     box-sizing: border-box;
-    background: #fff;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    background:#fff;
     border-bottom: 1px solid #ccc;
-    color: #666;
-  }
-  .mint-header-title{
-    font-size: 30px;
-  }
-  .mintui{
-    font-size: 40px !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .left-menu{
+      font-size: 30px;
+    }
+    .right-menu{
+      font-size: 50px;
+    }
+    .center-menu{
+      flex: 1;
+    }
+    .search{
+      width: 100%;
+      padding: 0 15px;
+      position: relative;
+      input{
+        width: 100%;
+        height: 46px;
+        border-radius: 23px;
+        font-size: 14px;
+        text-indent: 50px;
+        background: #f7f7f7;
+      }
+      &::before{
+        font-family: "iconfont";
+        font-style: normal;
+        font-size: 25px;
+        content: "\e65b";
+        position: absolute;
+        left: 25px;
+        top: 0;
+      }
+    }
   }
 </style>

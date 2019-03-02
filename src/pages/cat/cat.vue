@@ -1,6 +1,6 @@
 <template>
   <div class="cat" ref="catView">
-    <Header title="商品分类"></Header>
+    <Header></Header>
     <div class="cat-menu">
       <div class="menu-left">
         <ul v-if="catInfo">

@@ -14,5 +14,7 @@ export const getHome = () => http.get("default/index");
 
 // 2.3获取分类数据
 export const getCat = () => http.get("default/cat-list");
+
 // 2.4获取购物车数据
+export const getCart = () => http.get("cart/list&access_token=7apWBXl1llqEKJUlQ2_qHaptxbeZ5zeu");
 // 2.5获取个人中心数据

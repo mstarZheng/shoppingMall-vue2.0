@@ -4,6 +4,7 @@ export default {
     navbarInfo:{},
     homeInfo:{},
     catInfo:{},
+    cartInfo:{},
     // count:666,
     // value:123,
 }

@@ -3,7 +3,8 @@
 import {
     DEFAULT_NAVBAR,
     DEFAULT_HOME,
-    DEFAULT_CAT
+    DEFAULT_CAT,
+    DEFAULT_CART,
 } from './mutations-type'
 
 export default {
@@ -15,5 +16,8 @@ export default {
     },
     [DEFAULT_CAT](state,result){
         state.catInfo = result;
+    },
+    [DEFAULT_CART](state,result){
+        state.cartInfo = result;
     }
 }

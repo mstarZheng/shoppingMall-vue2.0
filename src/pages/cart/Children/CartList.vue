@@ -1,14 +1,14 @@
 <template>
   <div class="cart-list">
     <div class="list-title">
-      <a href="javascript:;" class="iconfont" @click="checkall">{{flag ? '&#xe604;' : '&#xe651;'}}</a>
+      <a href="javascript:;" class="iconfont" @click="checkall">{{checkAllState ? '&#xe604;' : '&#xe651;'}}</a>
       <p>平台自营</p>
     </div>
     <div class="list-main">
-      <ul v-if="cartInfo">
-        <li v-for="(item, index) in cartInfo.list" :key="index">
+      <ul v-if="all">
+        <li v-for="(item, index) in all" :key="index">
           <div class="list-left">
-            <a href="javascript:;" class="iconfont" @click="check(index)">{{checkState[index] ? '&#xe604;' : '&#xe651;'}}</a>
+            <a href="javascript:;" class="iconfont" @click="check(index)">{{checkItemState[index] ? '&#xe604;' : '&#xe651;'}}</a>
             <img :src="item.goods_pic" alt="">
           </div>
           <div class="list-right">
@@ -37,23 +37,10 @@
         name: "CartList",
         methods: {
           check(index){
-            // 1.修改当前勾选按钮的状态
-            this.checkState = index;
-            // 2.强制更新界面
-            this.$forceUpdate();
-            // 3.判断是否需要全选
-            let res = this.checkState.find(function (item, index) {
-              return item === false;
-            });
-            this.flag = (res === false ? false: true);
-
-          },
+            this.$store.dispatch("products/changeCheckItemState",index);
+          }, 
           checkall(){
-            let self = this;
-            this.cartInfo.list.forEach(function (item, index) {
-              self.check(index);
-            });
-            // this.flag = !this.flag;
+            this.$store.dispatch("products/changeCheckAllState");
           }
         },
         filters: {
@@ -67,26 +54,14 @@
           }
         },
         computed: {
-          ...mapState(['cartInfo']),
-          checkState: {
-            get: function () {
-              let arr = [];
-              this.cartInfo.list.forEach(function (item, index) {
-                arr.push(false);
-              });
-              return arr;
-            },
-            set: function (index) {
-              // 注意点: 修改对象属性中的值, 界面不会刷新
-              this.checkState[index] = !this.checkState[index];
-            }
-          }
+          //如果是存储在一个单独模块中的，那么映射的时候，第一个参数需要传递模块名称
+          ...mapState('products',['all','checkAllState','checkItemState']),
         },
         data(){
           return {
             flag: false
           }
-        }
+        },
     }
 </script>
 

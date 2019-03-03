@@ -7,6 +7,9 @@ import getters from './getters'
 import mutations from './mutations'
 import actions from './actions'
 
+//导入独立的Store模块
+import products from './modules/products'
+
 //2、声明vuex
 Vue.use(Vuex);
 
@@ -16,4 +19,7 @@ export default new Vuex.Store({
     getters,
     mutations,
     actions,
+    modules:{
+        products
+    }
 });

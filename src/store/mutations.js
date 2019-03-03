@@ -17,7 +17,4 @@ export default {
     [DEFAULT_CAT](state,result){
         state.catInfo = result;
     },
-    [DEFAULT_CART](state,result){
-        state.cartInfo = result;
-    }
 }

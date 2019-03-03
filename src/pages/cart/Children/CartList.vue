@@ -19,9 +19,9 @@
             <div class="list-right-bottom">
               <p class="item-price">{{item.price}}</p>
               <div class="item-step">
-                <button class="step-sub">-</button>
+                <button class="step-sub" @click="stepsub(index)">-</button>
                 <input type="text" :value="item.num">
-                <button class="step-add">+</button>
+                <button class="step-add" @click="stepadd(index)">+</button>
               </div>
             </div>
           </div>
@@ -41,7 +41,19 @@
           }, 
           checkall(){
             this.$store.dispatch("products/changeCheckAllState");
-          }
+          },
+          stepsub(index){
+            this.$store.dispatch("products/changeProductNum",{
+              index:index,
+              type:"sub"
+            });
+          },
+          stepadd(index){
+            this.$store.dispatch("products/changeProductNum", {
+              index: index,
+              type: "add"
+            });
+          },
         },
         filters: {
           attrfilter(value){

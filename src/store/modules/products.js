@@ -3,7 +3,8 @@ export const DEFAULT_CART = "default_cart";
 export const CHANGE_CHECK_ALL_STATE = "change_check_all_state";
 export const CHANGE_CHECK_ITEM_STATE = "change_check_item_state";
 export const CHANGE_PRODUCT_NUM = "change_product_num";
-import {getCart} from "./../../api/index"
+export const EDIT_PRODUCTS = "edit_products";
+import {getCart,editCart} from "./../../api/index"
 
 //等价于state.js
 const state = {
@@ -45,7 +46,16 @@ const mutations = {
             return item === false;
         });
         state.checkAllState = result !== false;
-    }
+    },
+    //修改某一个商品的数量
+    [CHANGE_PRODUCT_NUM](state,obj){
+        let product = state.all[obj.index];
+        if(obj.type === 'sub'){
+            product.num -= 1;
+        }else{
+            product.num += 1;
+        }
+    },
 };
 
 //等价于actuions.js
@@ -72,7 +82,21 @@ const actions = {
         commit(CHANGE_CHECK_ITEM_STATE,index);
     },
     //4、修改商品的数量
+    changeProductNum({commit},obj){
+        commit(CHANGE_PRODUCT_NUM,obj);
+    },
     //5、保存用户修改之后的商品
+    async editProducts({commit}){
+        let result = await editCart({
+            list: state.all,
+            access_token: "7apWBXl1llqEKJUlQ2_qHaptxbeZ5zeu"
+        });
+        if(result.code === 0){
+            console.log("保存购物车数据成功");
+        }else{
+            console.log("保存购物车数据失败！！！");
+        }
+    }
 };
 
 //等价于getters.js

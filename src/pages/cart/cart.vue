@@ -21,11 +21,10 @@
       created(){
         this.$store.dispatch("products/requestCart");
       },
-      data(){
-        return {
-          flag:false
+       beforeDestroy(){
+          // 当用户离开购物车界面的时候, 需要保存用户修改之后的购物车数据
+          this.$store.dispatch("products/editProducts");
         }
-      },
   }
 </script>
 <style scoped lang="less">

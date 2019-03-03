@@ -17,4 +17,8 @@ export const getCat = () => http.get("default/cat-list");
 
 // 2.4获取购物车数据
 export const getCart = () => http.get("cart/list&access_token=7apWBXl1llqEKJUlQ2_qHaptxbeZ5zeu");
-// 2.5获取个人中心数据
+
+// 2.5保存用户修改之后的购物车数据
+export const editCart = (data) => http.post("cart/cart-edit", data);
+
+// 2.6获取个人中心数据

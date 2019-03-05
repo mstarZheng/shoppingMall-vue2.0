@@ -19,8 +19,6 @@
 </template>
 <script>
     import {mapState} from "vuex";
-    import 'swiper/dist/css/swiper.css';
-    import { swiper, swiperSlide } from 'vue-awesome-swiper';
     export default {
         name:"Banner",
         computed:mapState(['productInfo']),

@@ -8,7 +8,7 @@
         name:"Detail",
         computed:{
             detail(){
-                console.log(this.$store.state.productInfo);
+                // console.log(this.$store.state);
                 return this.$store.state.productInfo.detail;
             }
         }

@@ -1,9 +1,10 @@
 <template>
     <div class="goods">
-        <Header>
+        <Header class="header">
             <p slot="center">商品详情</p>
         </Header>
         <Banner></Banner>
+        <ServiceList></ServiceList>
         <ProductDetail></ProductDetail>
     </div>
 </template>
@@ -11,6 +12,7 @@
     import Header from '@/components/Header/Header';
     import Banner from './Children/Banner';
     import ProductDetail from './Children/ProductDetail';
+    import ServiceList from './Children/ServiceList';
 
     export default {
         name:"goods",
@@ -21,11 +23,15 @@
             Banner,
             Header,
             ProductDetail,
+            ServiceList
         }
     }
 </script>
 <style scoped lang="less">
     .goods{
-        color:#666;
+        background: #f7f7f7;
+        .header{
+            border: none;
+        }
     }
 </style>

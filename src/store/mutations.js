@@ -5,6 +5,8 @@ import {
     DEFAULT_HOME,
     DEFAULT_CAT,
     DEFAULT_CART,
+    DEFAULT_USER,
+    PRODUCT_DETAIL,
 } from './mutations-type'
 
 export default {
@@ -16,5 +18,11 @@ export default {
     },
     [DEFAULT_CAT](state,result){
         state.catInfo = result;
+    },
+    [DEFAULT_USER](state,result){
+        state.userInfo = result;
+    },
+    [PRODUCT_DETAIL](state,result){
+        state.goodsInfo = result;
     },
 }

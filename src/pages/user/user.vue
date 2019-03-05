@@ -1,10 +1,24 @@
 <template>
-    <div>我是用户页面</div>
+    <div>
+       <Header>
+            <p slot="center">个人中心</p>
+       </Header>
+       <UserTop></UserTop>
+    </div>
 </template>
 <script>
-export default {
-    name:'user'
-}
+    import Header from '@/components/Header/Header';
+    import UserTop from './Children/UserTop'
+    export default {
+        name:'user',
+        components:{
+            Header,
+            UserTop,
+        },
+        created(){
+            this.$store.dispatch("requestUser");
+        },
+    }
 </script>
 <style scoped lang="less">
     

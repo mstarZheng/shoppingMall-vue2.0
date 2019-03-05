@@ -13,7 +13,7 @@
         </div>
         <div class="goods-footer">
           <ul v-if="list.goods_list">
-            <li v-for="(value, index) in list.goods_list" :key="index">
+            <li v-for="(value, index) in list.goods_list" :key="index" @click="switchTo(value.id)">
               <img :src="value.pic_url" alt="">
               <p class="goods-item-name">{{value.name}}</p>
               <p class="goods-item-price">{{value.price}}</p>
@@ -26,6 +26,11 @@
 <script>
     export default {
         name: "Goods",
+        methods:{
+          switchTo(id){
+            this.$router.replace('/pages/goods/goods?id='+id);
+          }
+        },
         computed: {
           catlist(){
             return this.$store.state.homeInfo.cat_list;

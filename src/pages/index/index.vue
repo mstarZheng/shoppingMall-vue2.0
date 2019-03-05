@@ -20,15 +20,18 @@
         created(){
           this.$store.dispatch("requestHome");
         },
-        // watch: {
-        //   "modulelist": function () {
-        //     this.$nextTick(function () {
-        //       this.$refs.homeView.style.paddingBottom = this.$store.state.tabbarHeight + "px";
-        //     });
-        //   }
-        // },
+        watch: {
+          "modulelist": function () {
+            this.modulelist.forEach(function (value,index) {
+                if(value.name === 'nav'){
+                    value.name = "Navgation";
+                }
+            });
+          }
+        },
         computed: {
           modulelist(){
+            // console.log(this.$store.state.homeInfo.module_list);
             return this.$store.state.homeInfo.module_list;
           }
         },

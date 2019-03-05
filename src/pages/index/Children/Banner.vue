@@ -66,7 +66,7 @@
             return this.$refs.mySwiper.swiper;
           },
           bannerlist(){
-              // console.log(this.$store.state.homeInfo);
+              // console.log(this.$store.state.homeInfo.banner_list);
               return this.$store.state.homeInfo.banner_list;
           }
         },

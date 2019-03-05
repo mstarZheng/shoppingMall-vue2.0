@@ -16,6 +16,7 @@
 		name:"Navgation",
 		computed:{
 			navlist(){
+				// console.log(this.$store.state.homeInfo.nav_icon_list);
 				return this.$store.state.homeInfo.nav_icon_list;
 			}
 		}

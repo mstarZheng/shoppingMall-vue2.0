@@ -5,6 +5,6 @@ export default {
     homeInfo:{},
     catInfo:{},
     cartInfo:{},
-    // count:666,
-    // value:123,
+    userInfo:{},
+    goodsInfo:{},
 }

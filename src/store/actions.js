@@ -4,7 +4,9 @@ import {
     getNavbar,
     getHome,
     getCat,
-    getCart
+    getCart,
+    getUser,
+    getProductDetail,
 } from './../api/index'
 
 //2、引入方法名称变量
@@ -12,7 +14,8 @@ import {
     DEFAULT_NAVBAR,
     DEFAULT_HOME, 
     DEFAULT_CAT,
-    
+    DEFAULT_USER,
+    PRODUCT_DETAIL
 } from './mutations-type'
 export default {
     //1、获取全局底部工具条数据
@@ -52,6 +55,32 @@ export default {
             commit(DEFAULT_CAT,result.data);
         }else{
             console.log("获取分类页面的数据");
+        } 
+    },
+    //4、获取个人页数据
+    async requestUser({commit}){
+        //从服务器获取数据
+        const result = await getUser();
+        // console.log(result);
+        //进行安全校验
+        if(result.code === 0){
+            //告诉mutations将数据保存起来
+            commit(DEFAULT_USER,result.data);
+        }else{
+            console.log("获取个人页面的数据");
+        } 
+    },
+    //5、获取商品的详细数据
+    async requestProductDetail({commit},id){
+        //从服务器获取数据
+        const result = await getProductDetail(id);
+        // console.log(result);
+        //进行安全校验
+        if(result.code === 0){
+            //告诉mutations将数据保存起来
+            commit(PRODUCT_DETAIL,result.data);
+        }else{
+            console.log("获取个人页面的数据");
         } 
     },
 }

@@ -22,3 +22,10 @@ export const getCart = () => http.get("cart/list&access_token=7apWBXl1llqEKJUlQ2
 export const editCart = (data) => http.post("cart/cart-edit", data);
 
 // 2.6获取个人中心数据
+export const getUser = () => http.get("user/index&access_token=7apWBXl1llqEKJUlQ2_qHaptxbeZ5zeu");
+
+// 2.7获取商品详情数据
+export const getProductDetail = (goodsId) => http.get('default/goods', {
+    id: goodsId,
+    access_token: '7apWBXl1llqEKJUlQ2_qHaptxbeZ5zeu'
+  });

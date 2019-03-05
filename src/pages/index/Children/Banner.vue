@@ -34,6 +34,8 @@
   例如:
   <div class="swiper-pagination"  slot="pagination"></div>
   如果同一个界面中出现了多个swiper, 只要swiper的:options不同就不会相互影响*/
+    import 'swiper/dist/css/swiper.css'
+    import { swiper, swiperSlide } from 'vue-awesome-swiper'
     export default {
         name: "Banner",
         // components:{

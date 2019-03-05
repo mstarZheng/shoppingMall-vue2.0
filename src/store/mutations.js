@@ -23,6 +23,6 @@ export default {
         state.userInfo = result;
     },
     [PRODUCT_DETAIL](state,result){
-        state.goodsInfo = result;
+        state.productInfo = result;
     },
 }

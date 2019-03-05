@@ -6,5 +6,5 @@ export default {
     catInfo:{},
     cartInfo:{},
     userInfo:{},
-    goodsInfo:{},
+    productInfo:{},
 }

@@ -29,7 +29,8 @@
 </script>
 <style scoped lang="less">
     .goods{
-        background: #f7f7f7;
+        // background: #f7f7f7;
+        color:#666;
         .header{
             border: none;
         }

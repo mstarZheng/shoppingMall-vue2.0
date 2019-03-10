@@ -38,7 +38,7 @@
 				}
 				p{
 					margin-top: 10px;
-					font-style: 25px;
+					font-size: 25px;
 					color: #666;
 				}
 			}

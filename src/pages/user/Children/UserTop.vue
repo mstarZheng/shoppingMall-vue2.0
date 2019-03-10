@@ -24,10 +24,11 @@
                 return this.$store.state.userInfo.user_center_bg;
             },
             userinfo(){
-                // console.log(this.$store.state.userInfo.user_info);
+                // console.log(this.$store.state.userInfo.orders);
                 return this.$store.state.userInfo.user_info;
             },
             wallets(){
+                // console.log(this.$store.state.userInfo.wallets);
                 return this.$store.state.userInfo.wallets;
             }
         }
